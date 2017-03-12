@@ -12,7 +12,7 @@ development:
 
 production:
   <<: *default
-  database: nina_development
+  database: nina_production
 
 test:
   <<: *default
