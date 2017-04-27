@@ -1,7 +1,7 @@
 class Product < ApplicationRecord
-   validates :name, :price, presence: true
-   validates :boolean_new_product, inclusion: { in: [true, false] }
-   validates :catalogue_number, uniqueness: true, on: :create
+   validates :name, :price, :net_price, presence: true
+   validates :new_product, inclusion: { in: [true, false] }, presence: true
+   validates :catalogue_number, presence: true, uniqueness: true, on: :create and :update
    validates :name, length: { maximum: 50 }
    validates :description, length: { maximum: 1000 }
    validates :price, :net_price, numericality: { greater_than: 0 }
