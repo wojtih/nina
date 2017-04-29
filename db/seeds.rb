@@ -7,5 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 100.times do
-  Product.create! name: Faker::Commerce.product_name, description: Faker::Commerce.color, price: Faker::Commerce.price
+  price = Faker::Commerce.price
+  net_price = (price / 1.23).round(2)
+
+  Product.create! name: Faker::Commerce.product_name, description: Faker::Commerce.color, price: price,
+    net_price: net_price, catalogue_number: Faker::Commerce.promotion_code,
+    country_of_origin: Faker::Address.country
+
 end
