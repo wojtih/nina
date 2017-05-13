@@ -1,5 +1,15 @@
 <h2><%= @products.size %></h2>
 
+<% if session[:cart] %>
+  Twój Koszyk:<br/>
+  <% Product.where(id: session[:cart]).each do |product| %>
+    <%= product.name %><br/>
+  <% end -%>
+<% end -%>
+
+<hr>
+
 <% @products.each do |p| %>
-  <%= p.name %> </br>
+  <%= p.name %> <%= link_to "Add to cart", add_to_cart_product_url(p.id), method: :post %>
+  </br>
 <% end -%>
