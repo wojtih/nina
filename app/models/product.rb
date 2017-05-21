@@ -7,5 +7,7 @@ class Product < ApplicationRecord
    validates :price, :net_price, numericality: { greater_than: 0 }
    validates :country_of_origin, presence: true
 
-
+   has_attached_file :image, :styles => { :medium => "300x300>", :thumb => "100x100>" }
+   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
+   
 end
